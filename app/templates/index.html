@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<h1>Hello, {{ current_user.username }}! Welcome to our extensive video library:</h1>
+	{% for film in mockfilms %}
+	<div>
+		<a href = {{ film.video }} target="_blank">
+			<img src = {{ film.image }} alt = "doh" style = "width:200px;height:200px;border:0;">
+		</a>
+	</div>
+	<div>
+		<a href="{{ url_for('review', ID=film.oid) }}"> Leave a review here!</a>
+	</div>
+	<div>
+		<a href="{{ url_for('info', ID=film.oid) }}"> Info for this film</a>
+	</div>
+	{% endfor %}
+{% endblock %}
+
+
